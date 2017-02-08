@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <script src="https://code.jquery.com/jquery-2.2.4.min.js" />
+        <script type="text/javascript">
+
+           function generate() {
+            console.log("something")
+            alert("Something")
+    $('#result').text(randomEl(adjectives)+' '+randomEl(nouns));
+    selectElementContents($('#result')[0]);
+}
+
+function randomEl(list) {
+    var i = Math.floor(Math.random() * list.length);
+    return list[i];
+}
+
+function selectElementContents(el) {
+    var range = document.createRange();
+    range.selectNodeContents(el);
+    var sel = window.getSelection();
+    sel.removeAllRanges();
+    sel.addRange(range);
+}
+
+var adjectives = ["El jardín","La ilusión", "El sueño", "El laberinto", "El libro"];
+var nouns = ["perdido", "prohibido", "del otro", "dormido","ilusiorio","invisible"];
+
+        </script>
+        <style>
+        .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+} 
+        </style>
+    </head>
+    <body>
+    	<div style="margin-left: auto; margin-right: auto;">
+            <h3>Generador de nombres de peliculas de Menoni</h3>
+            <button onclick="generate()">Click me</button>
+            <h2 id="result"></h2>
+        </div>
+    </body>
+</html>
