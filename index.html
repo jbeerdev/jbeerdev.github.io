@@ -6,7 +6,12 @@
     <meta http-equiv="Content-Script-Type" content="text/javascript">
     <script type="text/javascript">
         function calculateName() {
-            document.getElementById("result").innerHTML = randomEl(adjectives) + ' ' + randomEl(nouns);
+            var rand = getRandBinary();
+            if(rand==0){
+                document.getElementById("result").innerHTML = randomEl(masculineNouns) + ' ' + randomEl(masculineAdjetives);
+            }else{
+                document.getElementById("result").innerHTML = randomEl(femenineNouns) + ' ' + randomEl(femenineAdjetives);
+            }
         }
 
         function randomEl(list) {
@@ -14,8 +19,15 @@
             return list[i];
         }
 
-        var adjectives = ["El jardín", "La ilusión", "El sueño", "El laberinto", "El libro", "El bar","El agujero","La hoja","El arbol","La memoria","La magia","El quijote","Borges"];
-        var nouns = ["perdido", "prohibido", "del otro", "dormido", "ilusiorio", "invisible", "ilusionado", "poetico", "contado","onírico","olvidada","mágico","moderno"];
+        var masculineNouns = ["El jardín", "El sueño", "El laberinto", "El libro", "El bar","El agujero", "El arbol","El quijote","Borges"];
+        var masculineAdjetives = ["perdido", "prohibido", "del otro", "dormido", "ilusiorio", "invisible", "ilusionado", "poetico", "contado","onírico","olvidado","mágico","moderno"];
+
+        var femenineNouns = ["La ilusión","La hoja","La memoria","La magia","La risa"];
+        var femenineAdjetives = ["perdida", "prohibida", "de la otra", "dormida", "ilusioria", "invisible", "ilusionada", "poetica", "contada","onírica","olvidada","mágica","moderna"];
+
+        function getRandBinary() {
+            return (Math.floor(Math.random() * 9) % 2);
+        }
     </script>
     <style>
         .button {
